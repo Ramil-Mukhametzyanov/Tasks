@@ -1,3 +1,5 @@
+1.0.0.0.3 14.09.2020
+display time: seconds, minutes, hours, days, months and years
 1.0.0.0.2 07.09.2020
 load current task data from server
 1.0.0.0.1 06.09.2020

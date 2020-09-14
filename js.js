@@ -14,6 +14,15 @@ function find(name){
  return -1;
 }
 
+function display_time(t){
+ if(t < 60) return t + "s";
+ if(t < 60 * 60) return Math.round(t/60) + "m";
+ if(t < 24 * 60 * 60) return Math.round(10*t/60/60)/10 + "h";
+ if(t < 30.4 * 24 * 60 * 60) return Math.round(10*t/60/60/24)/10 + "d";
+ if(t < 12 * 30.4 * 24 * 60 * 60) return Math.round(10*t/60/60/24/30.4)/10 + "m";
+ return Math.round(10*t/60/60/24/30.4)/10 + "y";
+}
+
 function count(v){
  Te = new Date();
  var el = document.getElementById('end' + v);
@@ -25,12 +34,12 @@ function count(v){
  var tdur = 0;
  for(var i = 0; i < tasks[v].t.length; i++) tdur += tasks[v].t[i].dur;
  tdur += dur;
- el.innerHTML = dur + "s";
+ el.innerHTML = display_time(dur);
  tasks[v].Te = Te;
  tasks[v].dur = dur;
  var el = document.getElementById('tdur' + v);
 
- el.innerHTML = tdur + "s";
+ el.innerHTML = display_time(tdur);
 
  if(q) clearTimeout(q);
  q = setTimeout("count(" + v + ");", 100);
